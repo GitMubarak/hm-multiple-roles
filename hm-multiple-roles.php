@@ -1,12 +1,11 @@
 <?php
-
 /**
  * Plugin Name:	HM Multiple Roles
  * Plugin URI:	https://wordpress.org/plugins/hm-multiple-roles/
  * Description:	This plugin allows you to select multiple roles for a user
  * Version:		1.0
- * Author:		Hossni Mubarak
- * Author URI:	https://hossnimubarak.com/
+ * Author:		HM Plugin
+ * Author URI:	https://hmplugin.com/
  * License:		GPL-2.0+
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
  */
