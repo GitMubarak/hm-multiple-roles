@@ -3,7 +3,7 @@ Contributors: mhmrajib, hmplugin
 Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
 Requires at least: 4.6
-Tested up to: 5.6
+Tested up to: 5.7.2
 Stable tag: 1.0
 Requires PHP: 5.6
 License: GPLv2 or later
