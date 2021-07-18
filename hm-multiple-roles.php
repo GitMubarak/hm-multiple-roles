@@ -53,10 +53,6 @@ add_action( 'admin_enqueue_scripts', 'hmmr_admin_enqueue_scripts', 10 );
 
 
 function hmmr_add_multiple_roles_ui( $user ) {
-	
-	if ( ! current_user_can( 'edit_user', $user->ID ) ) {
-		return;
-	}
 
 	$roles = get_editable_roles();
 
@@ -65,18 +61,29 @@ function hmmr_add_multiple_roles_ui( $user ) {
 	<div class="hmmr-roles-container">
 		<table class="form-table">
 			<tr>
-				<th><label for="user_roles"><?php esc_html_e('Roles', HMMR_TXT_DOMAIN); ?></label></th>
+				<th><label for="user_roles"><?php _e('Roles', HMMR_TXT_DOMAIN); ?></label></th>
 				<td>
 					<?php
-						foreach ( $roles as $role_id => $role_data ) : 
-						?>
-							<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
-								<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> />
-								<?php esc_html_e( $role_data['name'] ); ?>
-							</label>
-							<br />
-						<?php 
-						endforeach; 
+						foreach ( $roles as $role_id => $role_data ) {
+
+							if ( current_user_can( 'administrator', $user->ID ) ) {
+								?>
+								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
+									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> />
+									<?php esc_html_e( $role_data['name'] ); ?>
+								</label>
+								<br />
+								<?php
+							} else {
+								?>
+								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
+									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> disabled />
+									<?php esc_html_e( $role_data['name'] ); ?>
+								</label>
+								<br />
+								<?php
+							} // if ( ! current_user_can( 'administrator', $user->ID ) ) {
+						} // foreach ( $roles as $role_id => $role_data ) {
 					?>
 					<?php wp_nonce_field( 'hmmr_set_roles', '_hmmr_roles_nonce' ); ?>
 				</td>
