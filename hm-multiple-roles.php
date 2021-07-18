@@ -3,7 +3,7 @@
  * Plugin Name:	HM Multiple Roles
  * Plugin URI:	https://wordpress.org/plugins/hm-multiple-roles/
  * Description:	This plugin allows you to select multiple roles for a user
- * Version:		1.0
+ * Version:		1.1
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com/
  * License:		GPL-2.0+
@@ -18,7 +18,7 @@ define('HMMR_SLUG', plugin_basename(__FILE__));
 define('HMMR_PRFX', 'hmmr_');
 define('HMMR_CLS_PRFX', 'cls-hmmr-');
 define('HMMR_TXT_DOMAIN', 'hm-multiple-roles');
-define('HMMR_VERSION', '1.0');
+define('HMMR_VERSION', '1.1');
 
 
 function hmmr_plugin_init() {
@@ -31,8 +31,8 @@ function hmmr_admin_enqueue_scripts( $handle ) {
 		
 	if ( 'user-edit.php' == $handle || 'user-new.php' == $handle ) {
 		wp_enqueue_style(
-			'hmmr-admin-style',
-			HMMR_ASSETS . 'hmmr-admin-styles.css',
+			'hmmr-admin',
+			HMMR_ASSETS . 'hmmr-admin.css',
 			array(),
 			HMMR_VERSION,
 			FALSE
@@ -41,8 +41,8 @@ function hmmr_admin_enqueue_scripts( $handle ) {
 		wp_enqueue_script( 'jquery' );
 		
 		wp_enqueue_script(
-			'hmmr-admin-script',
-			HMMR_ASSETS . 'hmmr-admin-script.js',
+			'hmmr-admin',
+			HMMR_ASSETS . 'hmmr-admin.js',
 			array('jquery'),
 			HMMR_VERSION,
 			TRUE

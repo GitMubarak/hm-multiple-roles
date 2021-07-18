@@ -1,15 +1,15 @@
 === HM Multiple Roles ===
-Contributors: mhmrajib, hmplugin
+Contributors: hmplugin, mhmrajib
 Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
-Requires at least: 4.6
+Requires at least: 5.0
 Tested up to: 5.7.2
-Stable tag: 1.0
-Requires PHP: 5.6
+Stable tag: 1.1
+Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows you to select multiple roles for a user
+This HM Multiple Roles plugin allows you to select multiple user roles to a user profile.
 
 == Description ==
 
