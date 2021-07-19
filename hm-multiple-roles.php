@@ -29,7 +29,7 @@ add_action( 'plugins_loaded', 'hmmr_plugin_init' );
 
 function hmmr_admin_enqueue_scripts( $handle ) {
 		
-	if ( 'user-edit.php' == $handle || 'user-new.php' == $handle ) {
+	if ( 'user-edit.php' == $handle || 'user-new.php' == $handle || 'options-general.php' == $handle ) {
 		wp_enqueue_style(
 			'hmmr-admin',
 			HMMR_ASSETS . 'hmmr-admin.css',
@@ -70,7 +70,7 @@ function hmmr_add_multiple_roles_ui( $user ) {
 								?>
 								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
 									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> />
-									<?php esc_html_e( $role_data['name'] ); ?>
+									<?php esc_html_e( translate_user_role( $role_data['name'] ) ); ?>
 								</label>
 								<br />
 								<?php
@@ -78,7 +78,7 @@ function hmmr_add_multiple_roles_ui( $user ) {
 								?>
 								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
 									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> disabled />
-									<?php esc_html_e( $role_data['name'] ); ?>
+									<?php esc_html_e( translate_user_role( $role_data['name'] ) ); ?>
 								</label>
 								<br />
 								<?php
@@ -151,3 +151,55 @@ function hmmr_save_multiple_user_roles( $user_id ) {
 add_action('personal_options_update', 'hmmr_save_multiple_user_roles');
 add_action('edit_user_profile_update', 'hmmr_save_multiple_user_roles');
 add_action('user_register', 'hmmr_save_multiple_user_roles');
+
+
+/**
+ * Add Multiple roles to new user in Settings > General
+*/
+function hmmr_general_register_settings() {
+    
+	register_setting( 
+        'general', 
+        'hmmr_user_roles',
+		'sanitize_text_field'
+    );
+  
+	add_settings_section( 
+        'site-guide', 
+        '', 
+        '__return_false', 
+        'general' 
+    );
+   
+	add_settings_field( 
+        'hmmr_user_roles', 
+        __('New User Default Role', HMMR_TXT_DOMAIN), 
+        'hmmr_general_multiple_roles', 
+        'general', 
+        'site-guide'
+    );
+}
+add_action( 'admin_init', 'hmmr_general_register_settings' );
+
+function hmmr_general_multiple_roles() {
+
+	$roles_in_settings = explode(',', get_option('hmmr_user_roles') );
+	$roles = get_editable_roles();
+	?>
+	<input type="hidden" name="hmmr_user_roles" id="hmmr_user_roles_general">
+	<?php
+	foreach ( $roles as $role_id => $role_data ) {
+
+		if ( current_user_can( 'administrator', $user->ID ) ) {
+			?>
+			
+			<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
+				<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles_general" <?php echo in_array( $role_id, $roles_in_settings ) ? 'checked' : ''; ?> />
+				<?php esc_html_e( translate_user_role( $role_data['name'] ) ); ?>
+			</label>
+			<br />
+			<?php
+		}
+
+	} // foreach ( $roles as $role_id => $role_data ) {
+}

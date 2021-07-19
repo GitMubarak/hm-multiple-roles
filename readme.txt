@@ -90,5 +90,8 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 == Changelog ==
 
+= 1.1 =
+* Security update for non admin user
+
 = 1.0 =
 * Initial release
