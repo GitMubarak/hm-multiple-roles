@@ -2,13 +2,17 @@ input[type="checkbox"] {
     max-width: 1rem;
 }
 
-label[for="default_role"],
 label[for="role"],
 select#role,
 label[for="um-role"],
 select#um-role,
-select#default_role,
 h3#um_user_screen_block,
 div#um_role_selector_wrapper {
     display: none;
 }
+
+
+/*
+label[for="default_role"],
+select#default_role,
+*/

@@ -92,6 +92,7 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 = 1.1 =
 * Security update for non admin user
+* translate_user_role applied to role name
 
 = 1.0 =
 * Initial release

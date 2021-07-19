@@ -156,11 +156,12 @@ add_action('user_register', 'hmmr_save_multiple_user_roles');
 /**
  * Add Multiple roles to new user in Settings > General
 */
+/*
 function hmmr_general_register_settings() {
     
 	register_setting( 
         'general', 
-        'hmmr_user_roles',
+        'default_role',
 		'sanitize_text_field'
     );
   
@@ -172,7 +173,7 @@ function hmmr_general_register_settings() {
     );
    
 	add_settings_field( 
-        'hmmr_user_roles', 
+        'default_role', 
         __('New User Default Role', HMMR_TXT_DOMAIN), 
         'hmmr_general_multiple_roles', 
         'general', 
@@ -182,11 +183,12 @@ function hmmr_general_register_settings() {
 add_action( 'admin_init', 'hmmr_general_register_settings' );
 
 function hmmr_general_multiple_roles() {
-
-	$roles_in_settings = explode(',', get_option('hmmr_user_roles') );
+	update_option('default_role', 'aaa');
+	echo get_option('default_role');
+	$roles_in_settings = explode(',', get_option('default_role') );
 	$roles = get_editable_roles();
 	?>
-	<input type="hidden" name="hmmr_user_roles" id="hmmr_user_roles_general">
+	<input type="hidden" name="default_role" id="hmmr_user_roles_general">
 	<?php
 	foreach ( $roles as $role_id => $role_data ) {
 
@@ -203,3 +205,4 @@ function hmmr_general_multiple_roles() {
 
 	} // foreach ( $roles as $role_id => $role_data ) {
 }
+*/

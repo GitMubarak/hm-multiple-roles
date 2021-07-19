@@ -8,15 +8,15 @@
         row.html($('.hmmr-roles-container tr').html());
         $('.hmmr-roles-container').remove();
 
-        // in general options
-        $('select#default_role').closest('tr').remove();
-
         $('input[name="hmmr_user_roles_general"]').change(function() {
             var checkedValue = $('input:checkbox:checked').map(function() {
                 return this.value;
             }).get();
             $('#hmmr_user_roles_general').val(checkedValue);
-        })
+        });
+
+        // in general options
+        //$('select#default_role').closest('tr').remove();
     })
 
 })(jQuery);
