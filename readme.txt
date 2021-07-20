@@ -90,6 +90,9 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 == Changelog ==
 
+= 1.2 =
+* Freemius monetization integrated
+
 = 1.1 =
 * Security update for non admin user
 * translate_user_role applied to role name
