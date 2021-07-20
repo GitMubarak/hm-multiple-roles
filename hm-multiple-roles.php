@@ -2,15 +2,49 @@
 /**
  * Plugin Name:	HM Multiple Roles
  * Plugin URI:	https://wordpress.org/plugins/hm-multiple-roles/
- * Description:	This plugin allows you to select multiple roles for a user
- * Version:		1.1
+ * Description:	This HM Multiple Roles plugin allows you to select multiple user roles to a user profile.
+ * Version:		1.2
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com/
  * License:		GPL-2.0+
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-if ( ! defined('ABSPATH') ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if ( ! function_exists( 'hmmr_fs' ) ) {
+    // Create a helper function for easy SDK access.
+    function hmmr_fs() {
+        global $hmmr_fs;
+
+        if ( ! isset( $hmmr_fs ) ) {
+            // Include Freemius SDK.
+            require_once dirname(__FILE__) . '/freemius/start.php';
+
+            $hmmr_fs = fs_dynamic_init( array(
+                'id'                  => '8742',
+                'slug'                => 'hm-multiple-roles',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_8cf3c8f9063927b5828e48900b2fb',
+                'is_premium'          => false,
+                'has_addons'          => false,
+                'has_paid_plans'      => false,
+                'menu'                => array(
+                    'first-path'     => 'plugins.php',
+                ),
+            ) );
+        }
+
+        return $hmmr_fs;
+    }
+
+    // Init Freemius.
+    hmmr_fs();
+    // Signal that SDK was initiated.
+    do_action( 'hmmr_fs_loaded' );
+}
 
 define('HMMR_PATH', plugin_dir_path(__FILE__));
 define('HMMR_ASSETS', plugins_url('/assets/', __FILE__));
@@ -18,7 +52,7 @@ define('HMMR_SLUG', plugin_basename(__FILE__));
 define('HMMR_PRFX', 'hmmr_');
 define('HMMR_CLS_PRFX', 'cls-hmmr-');
 define('HMMR_TXT_DOMAIN', 'hm-multiple-roles');
-define('HMMR_VERSION', '1.1');
+define('HMMR_VERSION', '1.2');
 
 
 function hmmr_plugin_init() {

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
 Requires at least: 5.0
 Tested up to: 5.7.2
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
