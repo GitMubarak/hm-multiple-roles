@@ -109,13 +109,10 @@ function hmmr_add_multiple_roles_ui( $user ) {
 								<br />
 								<?php
 							} else {
-								?>
-								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
-									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> disabled />
-									<?php esc_html_e( translate_user_role( $role_data['name'] ) ); ?>
-								</label>
-								<br />
-								<?php
+								
+								if ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) {
+									echo translate_user_role( $role_data['name'] ) . ', ';
+								}
 							} // if ( ! current_user_can( 'administrator', $user->ID ) ) {
 						} // foreach ( $roles as $role_id => $role_data ) {
 					?>
@@ -134,7 +131,7 @@ add_action( 'edit_user_profile', 'hmmr_add_multiple_roles_ui', 0 );
 function hmmr_save_multiple_user_roles( $user_id ) {
 
 	// Not allowed to edit user - bail
-	if ( ! current_user_can( 'edit_user', $user_id ) || ! wp_verify_nonce( $_POST['_hmmr_roles_nonce'], 'hmmr_set_roles' ) ) {
+	if ( ! current_user_can( 'administrator', $user_id ) || ! wp_verify_nonce( $_POST['_hmmr_roles_nonce'], 'hmmr_set_roles' ) ) {
 		return;
 	}
 	
@@ -144,7 +141,6 @@ function hmmr_save_multiple_user_roles( $user_id ) {
 	
 	if ( ! empty( $_POST['hmmr_user_roles'] ) ) {
 
-		//$new_roles = isset( $_POST['hmmr_user_roles'] ) ? (array) filter_var( $_POST['hmmr_user_roles'], FILTER_SANITIZE_STRING ) : array();
 		$new_roles = array_map( 'sanitize_text_field', wp_unslash( $_POST['hmmr_user_roles'] ) );
 
 		// Get rid of any bogus roles
