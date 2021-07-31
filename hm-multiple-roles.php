@@ -2,8 +2,8 @@
 /**
  * Plugin Name:	HM Multiple Roles
  * Plugin URI:	https://wordpress.org/plugins/hm-multiple-roles/
- * Description:	This HM Multiple Roles plugin allows you to select multiple user roles to a user profile.
- * Version:		1.2
+ * Description:	This HM Multiple Roles plugin allows you to assign multiple user roles to a user profile.
+ * Version:		1.3
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com/
  * License:		GPL-2.0+
@@ -52,7 +52,7 @@ define('HMMR_SLUG', plugin_basename(__FILE__));
 define('HMMR_PRFX', 'hmmr_');
 define('HMMR_CLS_PRFX', 'cls-hmmr-');
 define('HMMR_TXT_DOMAIN', 'hm-multiple-roles');
-define('HMMR_VERSION', '1.2');
+define('HMMR_VERSION', '1.3');
 
 
 function hmmr_plugin_init() {
@@ -185,58 +185,3 @@ function hmmr_save_multiple_user_roles( $user_id ) {
 add_action('personal_options_update', 'hmmr_save_multiple_user_roles');
 add_action('edit_user_profile_update', 'hmmr_save_multiple_user_roles');
 add_action('user_register', 'hmmr_save_multiple_user_roles');
-
-
-/**
- * Add Multiple roles to new user in Settings > General
-*/
-/*
-function hmmr_general_register_settings() {
-    
-	register_setting( 
-        'general', 
-        'default_role',
-		'sanitize_text_field'
-    );
-  
-	add_settings_section( 
-        'site-guide', 
-        '', 
-        '__return_false', 
-        'general' 
-    );
-   
-	add_settings_field( 
-        'default_role', 
-        __('New User Default Role', HMMR_TXT_DOMAIN), 
-        'hmmr_general_multiple_roles', 
-        'general', 
-        'site-guide'
-    );
-}
-add_action( 'admin_init', 'hmmr_general_register_settings' );
-
-function hmmr_general_multiple_roles() {
-	update_option('default_role', 'aaa');
-	echo get_option('default_role');
-	$roles_in_settings = explode(',', get_option('default_role') );
-	$roles = get_editable_roles();
-	?>
-	<input type="hidden" name="default_role" id="hmmr_user_roles_general">
-	<?php
-	foreach ( $roles as $role_id => $role_data ) {
-
-		if ( current_user_can( 'administrator', $user->ID ) ) {
-			?>
-			
-			<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
-				<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles_general" <?php echo in_array( $role_id, $roles_in_settings ) ? 'checked' : ''; ?> />
-				<?php esc_html_e( translate_user_role( $role_data['name'] ) ); ?>
-			</label>
-			<br />
-			<?php
-		}
-
-	} // foreach ( $roles as $role_id => $role_data ) {
-}
-*/
