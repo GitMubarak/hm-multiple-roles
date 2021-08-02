@@ -88,19 +88,24 @@ add_action( 'admin_enqueue_scripts', 'hmmr_admin_enqueue_scripts', 10 );
 
 function hmmr_add_multiple_roles_ui( $user ) {
 
+	//$user = wp_get_current_user();
+	//print_r($user);
+
 	$roles = get_editable_roles();
 
-	$user_roles = is_array( $user->roles ) ? array_intersect( array_values( $user->roles ), array_keys( $roles ) ) : array();
+	$user_roles = ! empty( $user->roles ) ? array_intersect( array_values( $user->roles ), array_keys( $roles ) ) : array();
 	?>
 	<div class="hmmr-roles-container">
 		<table class="form-table">
 			<tr>
-				<th><label for="user_roles"><?php _e('Roles', HMMR_TXT_DOMAIN); ?></label></th>
+				<th>
+					<label><?php _e('Roles', HMMR_TXT_DOMAIN); ?></label>
+				</th>
 				<td>
 					<?php
 						foreach ( $roles as $role_id => $role_data ) {
 
-							if ( current_user_can( 'administrator', $user->ID ) ) {
+							if ( current_user_can( 'promote_users', get_current_user_id() ) ) {
 								?>
 								<label for="user_role_<?php echo esc_attr( $role_id ); ?>">
 									<input type="checkbox" id="user_role_<?php esc_attr_e( $role_id ); ?>" value="<?php esc_attr_e( $role_id ); ?>" name="hmmr_user_roles[]" <?php echo ( ! empty( $user_roles ) && in_array( $role_id, $user_roles ) ) ? ' checked="checked"' : ''; ?> />
@@ -131,7 +136,7 @@ add_action( 'edit_user_profile', 'hmmr_add_multiple_roles_ui', 0 );
 function hmmr_save_multiple_user_roles( $user_id ) {
 
 	// Not allowed to edit user - bail
-	if ( ! current_user_can( 'administrator', $user_id ) || ! wp_verify_nonce( $_POST['_hmmr_roles_nonce'], 'hmmr_set_roles' ) ) {
+	if ( ! current_user_can( 'promote_users', $user_id ) || ! wp_verify_nonce( $_POST['_hmmr_roles_nonce'], 'hmmr_set_roles' ) ) {
 		return;
 	}
 	
