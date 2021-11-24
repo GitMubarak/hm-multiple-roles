@@ -90,6 +90,9 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 == Changelog ==
 
+= 1.4 =
+* Donation link added
+
 = 1.3 =
 * Security issue updated for non admin user
 * Notice error message fixed
