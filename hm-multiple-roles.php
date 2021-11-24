@@ -3,7 +3,7 @@
  * Plugin Name:	HM Multiple Roles
  * Plugin URI:	https://wordpress.org/plugins/hm-multiple-roles/
  * Description:	This HM Multiple Roles plugin allows you to assign multiple user roles to a user profile.
- * Version:		1.3
+ * Version:		1.4
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com/
  * License:		GPL-2.0+
@@ -52,7 +52,7 @@ define('HMMR_SLUG', plugin_basename(__FILE__));
 define('HMMR_PRFX', 'hmmr_');
 define('HMMR_CLS_PRFX', 'cls-hmmr-');
 define('HMMR_TXT_DOMAIN', 'hm-multiple-roles');
-define('HMMR_VERSION', '1.3');
+define('HMMR_VERSION', '1.4');
 
 
 function hmmr_plugin_init() {
