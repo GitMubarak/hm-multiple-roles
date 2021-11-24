@@ -122,6 +122,10 @@ function hmmr_add_multiple_roles_ui( $user ) {
 						} // foreach ( $roles as $role_id => $role_data ) {
 					?>
 					<?php wp_nonce_field( 'hmmr_set_roles', '_hmmr_roles_nonce' ); ?>
+					<br>
+					<a href="<?php echo esc_url( 'https://www.paypal.me/mhmrajib/' ); ?>" target="_blank" style="color:orange; font-weight: bold; margin-top: 10px;">
+						<?php esc_html_e( 'Help us to keep this plugin alive. Buy us a coffee!', 'hm-multiple-roles' ) ?>
+					</a>
 				</td>
 			</tr>
 		</table>
