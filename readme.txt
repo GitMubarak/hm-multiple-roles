@@ -3,8 +3,8 @@ Contributors: hmplugin, mhmrajib
 Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
 Requires at least: 5.0
-Tested up to: 5.9.1
-Stable tag: 1.6
+Tested up to: 6.0.1
+Stable tag: 1.7
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -89,6 +89,9 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 
 == Changelog ==
+
+= 1.7 =
+* Securiy fix
 
 = 1.6 =
 * Securiy fix
