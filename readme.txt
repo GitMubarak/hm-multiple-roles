@@ -2,14 +2,14 @@
 Contributors: hmplugin, mhmrajib
 Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
-Requires at least: 5.0
-Tested up to: 6.0.1
-Stable tag: 1.7
+Requires at least: 5.2
+Tested up to: 6.1.1
+Stable tag: 1.8
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This HM Multiple Roles plugin allows you to select multiple user roles to a user profile.
+It hides the default role dropdown list and displays a list of role checkboxes to select multiple roles for a user.
 
 == Description ==
 
@@ -89,6 +89,9 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 
 == Changelog ==
+
+= 1.8 =
+* Securiy fix
 
 = 1.7 =
 * Securiy fix
