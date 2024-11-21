@@ -5,10 +5,10 @@
  * Description:	It hides the default role dropdown list and displays a list of role checkboxes to select multiple roles for a user.
  * Author:		HM Plugin
  * Author URI:	https://hmplugin.com/
- * Version:		2.0
+ * Version:		2.1
  * Requires at least:   5.4
  * Requires PHP:        7.2
- * Tested up to:        6.6.2
+ * Tested up to:        6.7
  * License:             GPLv2 or later
  * License URI:         http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -55,7 +55,7 @@ define('HMMR_SLUG', plugin_basename(__FILE__));
 define('HMMR_PRFX', 'hmmr_');
 define('HMMR_CLS_PRFX', 'cls-hmmr-');
 define('HMMR_TXT_DOMAIN', 'hm-multiple-roles');
-define('HMMR_VERSION', '2.0');
+define('HMMR_VERSION', '2.1');
 
 function hmmr_plugin_init() {
 	load_plugin_textdomain( HMMR_TXT_DOMAIN, false, HMMR_PATH . '/languages/' );

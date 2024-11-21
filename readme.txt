@@ -3,8 +3,8 @@ Contributors: hmplugin, mhmrajib
 Donate link: https://www.paypal.me/mhmrajib
 Tags: user roles, role, roles, user, users
 Requires at least: 5.4
-Tested up to: 6.6.2
-Stable tag: 2.0
+Tested up to: 6.7
+Stable tag: 2.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -89,6 +89,9 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 
 
 == Changelog ==
+
+= 2.1 =
+* Freemius SDK update to 2.8.1
 
 = 2.0 =
 * Freemius SDK update to 2.8.1
