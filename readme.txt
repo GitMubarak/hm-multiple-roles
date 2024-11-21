@@ -91,7 +91,7 @@ Install HM Multiple Roles Plugin as a regular WordPress plugin. Here are differe
 == Changelog ==
 
 = 2.1 =
-* Freemius SDK update to 2.8.1
+* Freemius SDK update to 2.9.0
 
 = 2.0 =
 * Freemius SDK update to 2.8.1
